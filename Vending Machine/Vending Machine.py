@@ -68,7 +68,7 @@ def vendingmachine():
 
         print("Note: If you have remaining balance quit the program first, so you can get your change")
         answer = input("To continue buying type I and to quit the program type S: ")
-        if answer == 'i'.upper():                                                #If the keyword I is entered, then it will allow you to continue buying
+        if answer == 'i'.upper():                                                #If the keyword I or any keyword is entered, then it will allow you to continue buying
             quit = False
         elif answer == 's'.upper():                                              #If the keyword S is entered, then it will quit the program
             quit = True
