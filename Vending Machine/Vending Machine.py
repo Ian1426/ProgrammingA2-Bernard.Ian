@@ -1,7 +1,7 @@
 import time
 def vendingmachine():
     products = [
-        {'code': 'D1', 'name': 'Water', 'price': 1.50, 'stock': 5},         #Provides the list of drinks and snacks along with its code 
+        {'code': 'D1', 'name': 'Water', 'price': 1.50, 'stock': 5},         #Provides the list of drinks and snacks along with its code using a dictionary
         {'code': 'D2', 'name': 'Cola', 'price': 3, 'stock': 6},
         {'code': 'D3', 'name': 'Iced Vanilla Latte', 'price': 9.50, 'stock': 4},
         {'code': 'D4', 'name': 'Iced Coffee', 'price':8.25, 'stock': 7},
@@ -15,21 +15,21 @@ def vendingmachine():
     balance = 0
     quit = False
 
-    while quit == False:                                                     #Using while loop to make sure that the program is running correctly
+    while quit == False:                                                     #Using while loop to make sure that the program is running until the user quits
         print("Welcome to Ian's Vending Machine")
         time.sleep(1)
         print("------------------------------------------------------------------")
-        print("MENU")
-        for product in products:                                                #Printing everything in the dictionary
-            time.sleep(0.1)
+        print("MENU")                                                           #Using a for loop to display the available products including their prices, codes and stocks
+        for product in products:                                               
+            time.sleep(0.1)                                                    
             print(f"Product Name: {product['name']} - Price: {product['price']} - Code: {product['code']} - Stock: {product['stock']}")
         print("------------------------------------------------------------------")
 
         order = (input("Enter the code name of the item that you want to buy: "))
         for product in products:
-            if order == product['code']:
+            if order == product['code']:                                         #Using a for loop to check if the entered code by the user is correct
                 order = product
-                order['stock'] -= 1                                              #Stocks decreases as long as the program runs
+                order['stock'] -= 1                                              #Stocks will also decrease as long as the program is running
                 if order['stock'] == 0:
                     products.remove(product)
 
@@ -38,13 +38,13 @@ def vendingmachine():
 
             cash = float(input(f"Enter {order['price']} AED to buy: "))
 
-            if cash < order['price']:                          #If the price of item is higher than cash then it will ask the user to input the exact cash to get the product
+            if cash < order['price']:                              #If the price of item is higher than cash then it will ask the user to input the exact cash to get the item
                 balance = float(input("Insert exact amount: "))
                 balance = balance + cash
                 if balance == order['price']:
                     balance -= order['price']
                     print(str(order['name']) + " being dispensed...")
-                    time.sleep(2)
+                    time.sleep(2)                                  #Using time.sleep() function to stimulate delays in dispensing an item
                     print("Here's your " + str(order['name']))
                 elif balance > order['price']:
                     balance -= order['price']
@@ -55,12 +55,12 @@ def vendingmachine():
                     print("Current balance:" + str(balance) + "AED")
                     print("Insert exact amount")
 
-            elif cash == order['price']:                                         #If the given cash is equal to price of the item, then this will be executed
+            elif cash == order['price']:                                         #If the given cash is equal to price of the item, item will be dispensed
                 print(str(order['name']) + " being dispensed...")
                 time.sleep(2)
                 print(f"Thank you for buying here is your {order['name']}")
 
-            elif cash > order['price']:                                          #If cash is higher than price of the item, then this will be executed
+            elif cash > order['price']:                                          #If cash is higher than price of the item, item will be dispensed and given the correct change
                 balance = cash - order['price']
                 print(str(order['name']) + " being dispensed...")
                 time.sleep(2)
