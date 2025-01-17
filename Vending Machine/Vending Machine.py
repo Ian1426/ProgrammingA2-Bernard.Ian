@@ -38,7 +38,7 @@ def vendingmachine():
 
             cash = float(input(f"Enter {order['price']} AED to buy: "))
 
-            if cash < order['price']:                              #If the price of item is higher than cash then it will ask the user to input the exact cash to get the item
+            if cash < order['price']:                           #If the price of item is higher than cash then it will ask the user to input the remaining cash to get the item
                 balance = float(input("Insert exact amount: "))
                 balance = balance + cash
                 if balance == order['price']:
@@ -55,14 +55,14 @@ def vendingmachine():
                     print("Current balance:" + str(balance) + "AED")
                     print("Insert exact amount")
 
-            elif cash == order['price']:                                         #If the given cash is equal to price of the item, item will be dispensed
+            elif cash == order['price']:                                         #If the user inputs the right amount of cash, item will be dispensed once program has ended
                 print(str(order['name']) + " being dispensed...")
                 time.sleep(2)
                 print(f"Thank you for buying here is your {order['name']}")
 
-            elif cash > order['price']:                                          #If cash is higher than price of the item, item will be dispensed and given the correct change
+            elif cash > order['price']:                                          #If user inputs a higher amount of cash,user will be given the correct change
                 balance = cash - order['price']
-                print(str(order['name']) + " being dispensed...")
+                print(str(order['name']) + " being dispensed...") 
                 time.sleep(2)
                 print("Here's your " + str(order['name'] + " and remaining " + str(balance) + "AED"))
 
